@@ -58,6 +58,7 @@ fi
 mkdir -p pathbrute
 python3 multithread-pathbrute.py default
 rm defaultPaths.txt
+rm tmp.log
 
 echo "Grabbing urls from wayback machine .."
 mkdir -p wayback
