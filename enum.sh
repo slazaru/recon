@@ -57,6 +57,7 @@ if [ ! -f "./multithread-pathbrute.py" ]; then
 fi
 mkdir -p pathbrute
 python3 multithread-pathbrute.py default
+rm defaultPaths.txt
 
 echo "Grabbing urls from wayback machine .."
 mkdir -p wayback
