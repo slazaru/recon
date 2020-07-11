@@ -28,9 +28,27 @@ waybackurls: https://github.com/tomnomnom/waybackurls
 
 $ git clone THISREPO
 
-$ cd recon
+$ mv THISREPO DOMAINNAME
+
+$ cd DOMAINNAME
 
 $ ./enum.sh DOMAIN
 
-The output will be put in the current directory
+Then once the scripts are done and you want to send it back to your host:
+
+Pack it up, encrypt and then set up nc listener to send file:
+
+$ tar -czvf DOMAIN.tar.gz DOMAINNAME
+
+$ gpg -c DOMAIN.tar.gz
+
+$ cat DOMAIN.tar.gz.gpg | nc -lnvp 15234
+
+(on your host)
+
+$ nc X.Y.Z 15234 > DOMAIN.tar.gz.gpg
+
+$ gpg -d DOMAIN.tar.gz.gpg > DOMAIN.tar.gz
+
+$ tar -xzvf DOMAIN.tar.gz
 
